@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fourq/premise.git"
+    "url": "git+https://github.com/fourq/premise-code-challenge.git"
   },
   "author": "Rocky Assad <rocky@fourq.io>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/fourq/premise/issues"
+    "url": "https://github.com/fourq/premise-code-challenge/issues"
   },
-  "homepage": "https://github.com/fourq/premise#readme",
+  "homepage": "https://github.com/fourq/premise-code-challenge#readme",
   "devDependencies": {
     "babel-core": "^6.2.1",
     "lodash": "^3.10.1",
