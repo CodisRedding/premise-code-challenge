@@ -1,0 +1,34 @@
+{
+  "name": "premise",
+  "version": "1.0.0",
+  "description": "Coding Challenge",
+  "scripts": {
+    "build": ". scripts/build.sh",
+    "dev": ". scripts/dev.sh",
+    "serve": ". scripts/serve.sh",
+    "test": ". scripts/test.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fourq/premise.git"
+  },
+  "author": "Rocky Assad <rocky@fourq.io>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fourq/premise/issues"
+  },
+  "homepage": "https://github.com/fourq/premise#readme",
+  "devDependencies": {
+    "babel-core": "^6.2.1",
+    "lodash": "^3.10.1",
+    "mocha": "^2.3.4",
+    "nock": "^3.1.1",
+    "nodemon": "^1.8.1",
+    "supertest": "^1.1.0"
+  },
+  "dependencies": {
+    "babel-preset-es2015": "^6.1.18",
+    "moment": "^2.10.6",
+    "uuid": "^2.0.1"
+  }
+}
