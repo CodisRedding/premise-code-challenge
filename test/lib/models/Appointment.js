@@ -14,46 +14,47 @@ let data = require('../../../lib/fixtures/data').default;
 
 describe('Appointment', () => {
 
+  let scheduleTime = "2015-12-31T19:00:00+00:00";
+
   it('should return an instance of Appointment', () => {
-    let appointment = new Appointment('1', '1', '1', '1', 'reason', moment().unix());
+    let appointment = new Appointment('1', '1', '1', '1', 'reason', scheduleTime);
 
     assert(appointment instanceof Appointment);
   });
 
   it('should return an instance of Patient', () => {
-    let appointment = new Appointment('1', '1', '1', '1', 'reason', moment().unix());
+    let appointment = new Appointment('1', '1', '1', '1', 'reason', scheduleTime);
 
     assert(appointment.patient instanceof Patient);
   });
 
   it('should return an instance of Provider', () => {
-    let appointment = new Appointment('1', '1', '1', '1', 'reason', moment().unix());
+    let appointment = new Appointment('1', '1', '1', '1', 'reason', scheduleTime);
 
     assert(appointment.provider instanceof Provider);
   });
 
   it('should return an instance of Service', () => {
-    let appointment = new Appointment('1', '1', '1', '1', 'reason', moment().unix());
+    let appointment = new Appointment('1', '1', '1', '1', 'reason', scheduleTime);
 
     assert(appointment.service instanceof Service);
   });
 
   it('should return an instance of Appointment from static find', () => {
-    let appointment = new Appointment.find('1');
+    let appointment = Appointment.find('1');
 
     assert(appointment instanceof Appointment);
   });
 
   it('should return an instance of Appointment from static schedule', () => {
-    let epoch = '1763829978';
-    let appointmentResponse = Appointment.schedule('5', '5', '3', 'Reason', epoch);
+    let appointmentResponse = Appointment.schedule('5', '5', '3', 'Reason', scheduleTime);
 
     assert(appointmentResponse.appointment instanceof Appointment);
     assert.equal(appointmentResponse.appointment.patientId, '5');
     assert.equal(appointmentResponse.appointment.providerId, '5');
     assert.equal(appointmentResponse.appointment.serviceId, '3');
     assert.equal(appointmentResponse.appointment.reasonForVisit, 'Reason');
-    assert.equal(appointmentResponse.appointment.when, epoch);
+    assert.equal(appointmentResponse.appointment.when, scheduleTime);
 
     // cleanup
     _.remove(data.appointments, appointment => {
@@ -63,11 +64,11 @@ describe('Appointment', () => {
 
   it('should return an array of Appointments for provider ID', () => {
     data.appointments = data.appointments.concat([
-      {ID: '100', Patient: '1', Provider: '100', Service: '1', ReasonForVisit: 'Reason One', When: 1449078278},
-      {ID: '200', Patient: '2', Provider: '100', Service: '2', ReasonForVisit: 'Reason Two', When: 1449164695},
-      {ID: '300', Patient: '3', Provider: '100', Service: '3', ReasonForVisit: 'Reason Three', When: 1449251111},
-      {ID: '400', Patient: '4', Provider: '100', Service: '4', ReasonForVisit: 'Reason Four', When: 1449337535},
-      {ID: '500', Patient: '5', Provider: '100', Service: '5', ReasonForVisit: 'Reason Five', When: 1449423953}
+      {ID: '100', Patient: '1', Provider: '100', Service: '1', ReasonForVisit: 'Reason One', When: scheduleTime},
+      {ID: '200', Patient: '2', Provider: '100', Service: '2', ReasonForVisit: 'Reason Two', When: scheduleTime},
+      {ID: '300', Patient: '3', Provider: '100', Service: '3', ReasonForVisit: 'Reason Three', When: scheduleTime},
+      {ID: '400', Patient: '4', Provider: '100', Service: '4', ReasonForVisit: 'Reason Four', When: scheduleTime},
+      {ID: '500', Patient: '5', Provider: '100', Service: '5', ReasonForVisit: 'Reason Five', When: scheduleTime}
     ]);
 
     let appointments = Appointment.findAppointmentsByProvider('100');

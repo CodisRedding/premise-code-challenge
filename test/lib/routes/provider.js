@@ -44,7 +44,7 @@ describe('Provider routes', () => {
       .end(done);
   });
 
-  it('should return a message stating that the provider was not found', done => {
+  it('shouuld return a message stating that the provider was not found', done => {
     request(app)
       .get('/provider/6')
       .expect(res => {
