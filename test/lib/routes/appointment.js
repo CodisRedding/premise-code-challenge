@@ -3,7 +3,6 @@
  */
 import request from 'supertest';
 import assert from 'assert';
-import moment from 'moment';
 import app from '../../../lib/app';
 
 
@@ -40,7 +39,7 @@ describe('Appointment routes', () => {
           providerId: '1',
           serviceId: '1',
           reasonForVisit: 'Reason One',
-          when: 1449078278
+          when: "2015-12-31T17:00:00+00:00"
         },
         message: '',
         error: false
@@ -56,16 +55,16 @@ describe('Appointment routes', () => {
   });
 
   it('should schedule an appointment', done => {
-    let epoch = '1763829978';
+    let when = "2015-12-31T19:00:00+00:00";
     request(app)
-      .post(`/appointment/schedule/5/5/3/Reason/${epoch}`)
+      .post(`/appointment/schedule/5/5/3/Reason/${when}`)
       .expect(200)
       .expect(res => {
         assert.equal(res.body.data.appointment.patientId, '5');
         assert.equal(res.body.data.appointment.providerId, '5');
         assert.equal(res.body.data.appointment.serviceId, '3');
         assert.equal(res.body.data.appointment.reasonForVisit, 'Reason');
-        assert.equal(res.body.data.appointment.when, epoch);
+        assert.equal(res.body.data.appointment.when, when);
         assert.equal(res.body.message.length, 0);
         assert.equal(res.body.data.errors.length, 0);
         assert.equal(res.body.error, false);
