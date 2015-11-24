@@ -29,7 +29,7 @@ describe('AppointmentResponse', () => {
   it('should add an instance of Appointment via addAppointment', () => {
     let appointmentResponse = new AppointmentResponse();
 
-    appointmentResponse.setAppointment(new Appointment('1', '1', '1', '1', 'reason', moment().unix()));
+    appointmentResponse.setAppointment(new Appointment('1', '1', '1', '1', 'reason', moment().utc().unix()));
 
     assert(appointmentResponse.appointment instanceof Appointment);
   });
